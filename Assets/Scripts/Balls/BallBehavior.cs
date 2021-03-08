@@ -63,6 +63,9 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>
         actorTransform.right = new Vector3( actorTransform.right.x, actorTransform.right.y + angleToSum, actorTransform.right.z).normalized;
     }
 
+
+    public Vector3 CurrentBallPosition() => actorTransform.localPosition;
+
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PRIVATE METHODS  ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
 
