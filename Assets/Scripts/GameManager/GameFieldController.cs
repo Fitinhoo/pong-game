@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameFieldController : SingletonMonobehaviour<GameFieldController>
 {
     #region <--- VARIABLES --->
+    [Header("References: ")]
+    [SerializeField] private Transform leftPlatform = default;
+    [SerializeField] private Transform rightPlatform = default;
     public float FieldHeight { get; private set; } = default;
     public float FieldWidth { get; private set; } = default;
 
@@ -14,6 +17,12 @@ public class GameFieldController : SingletonMonobehaviour<GameFieldController>
     {
         FieldHeight = 2f * Camera.main.orthographicSize;
         FieldWidth = FieldHeight * Camera.main.aspect;
+
+        if (Validate())
+        {
+            leftPlatform.transform.localPosition = new Vector3((FieldWidth / 2) * -1 * 0.9f, 0, 0);
+            rightPlatform.transform.localPosition = new Vector3((FieldWidth / 2) * 0.9f, 0, 0);
+        }
     }
 
 
@@ -27,7 +36,12 @@ public class GameFieldController : SingletonMonobehaviour<GameFieldController>
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PRIVATE METHODS  ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
-
+    private bool Validate()
+    {
+        if (leftPlatform != null && rightPlatform != null) return true;
+        Debug.LogError(this.name + " | The platforms have not been referenced");
+        return false;
+    }
 
 
     #endregion

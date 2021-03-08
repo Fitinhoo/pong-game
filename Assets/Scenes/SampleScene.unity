@@ -225,9 +225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorTransform: {fileID: 764979021}
-  speed: 15
-  minStartAngle: -30
-  maxStartAngle: 30
+  speed: 20
+  minStartAngle: 150
+  maxStartAngle: 210
   showDebugLines: 0
   isOffTheField: 0
 --- !u!1 &686042167
@@ -978,6 +978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ebfaccda7b8d0488a1389a498ae801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftPlatform: {fileID: 1431346602}
+  rightPlatform: {fileID: 926452983}
 --- !u!4 &1457896811
 Transform:
   m_ObjectHideFlags: 0
