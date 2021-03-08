@@ -27,14 +27,8 @@ public class OnCollisionAddRotation : OnPlatformCollision
         float distanceFromCenter = other.contacts[0].point.y - transform.position.y;
         float distanceFactor = (distanceFromCenter / (actorHeight / 2));
 
-        print("distanceFromCenter: "+ distanceFromCenter);
-        print("distanceFactor: " + distanceFactor);
-
         float xDirection = 1 - Mathf.Abs(distanceFactor * 0.5f);
         float yDirection = 0 + ((distanceFactor * 0.5f));
-
-        print("xDirection: " + xDirection);
-        print("yDirection: " + yDirection);
 
         int invertDirectionMovement = BallBehavior.Instance.CurrentDirection.x < 0 ? 1 : -1;
         Vector2 newDirection = new Vector2(xDirection * invertDirectionMovement, yDirection);

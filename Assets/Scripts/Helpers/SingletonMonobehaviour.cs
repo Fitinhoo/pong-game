@@ -11,6 +11,5 @@ public abstract class SingletonMonobehaviour<T> : MonoBehaviour where T : Single
         if (Instance != null && Instance != this)
             Destroy(Instance.gameObject);
         Instance = (T)this;
-        DontDestroyOnLoad(this);
     }
 }
