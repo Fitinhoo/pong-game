@@ -225,10 +225,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorTransform: {fileID: 764979021}
-  speed: 10
+  speed: 15
   minStartAngle: 0
   maxStartAngle: 0
-  showDebugLines: 1
+  showDebugLines: 0
   isOffTheField: 0
 --- !u!1 &705507993
 GameObject:
@@ -411,7 +411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764979017}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 14.39, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -467,20 +467,20 @@ TrailRenderer:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: -1.6746818
+        outSlope: -1.6746818
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.0945946
       - serializedVersion: 3
         time: 1
-        value: 0
-        inSlope: -0.98810065
-        outSlope: -0.98810065
+        value: 0.074257426
+        inSlope: -0.38042656
+        outSlope: -0.38042656
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.2454955
+        inWeight: 0.11711711
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -627,8 +627,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926452979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 3, z: 1}
+  m_LocalPosition: {x: 18, y: -1, z: 0}
+  m_LocalScale: {x: 0.5, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -642,12 +642,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 926452979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 865f4ac51cf1e514bb49bc089b2689a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 033436e659b12da4cb99d165eab460b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   layerToCollide:
     serializedVersion: 2
     m_Bits: 256
+  rotationFactor: 0.5
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,7 +881,7 @@ Transform:
   m_GameObject: {fileID: 1431346598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 3, z: 1}
+  m_LocalScale: {x: 0.5, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -894,12 +895,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1431346598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 865f4ac51cf1e514bb49bc089b2689a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 033436e659b12da4cb99d165eab460b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   layerToCollide:
     serializedVersion: 2
     m_Bits: 256
+  rotationFactor: 0.5
 --- !u!1 &1457896809
 GameObject:
   m_ObjectHideFlags: 0

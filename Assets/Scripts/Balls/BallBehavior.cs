@@ -58,6 +58,11 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>
     }
 
 
+    public void UpdateDirection(float angleToSum)
+    {
+        actorTransform.right = new Vector3( actorTransform.right.x, actorTransform.right.y + angleToSum, actorTransform.right.z).normalized;
+    }
+
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PRIVATE METHODS  ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
 

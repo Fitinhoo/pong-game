@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnPlatformCollision : MonoBehaviour
+public class OnCollisionAddRotation : OnPlatformCollision
 {
     #region <--- VARIABLES --->
-    [SerializeField] private LayerMask layerToCollide;
+    [SerializeField] private float rotationFactor = default;
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* ENGINE METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
-    private void OnCollisionEnter(Collision other)
-    {
-        if (layerToCollide == (1 << other.gameObject.layer)) OnCollision(other);
-    }
 
 
     #endregion
@@ -20,10 +16,11 @@ public class OnPlatformCollision : MonoBehaviour
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PRIVATE METHODS  ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
-    protected virtual void OnCollision(Collision other)
+    protected override void OnCollision(Collision other)
     {
-        Vector3 normalCollision = new Vector3(other.contacts[0].normal.x, other.contacts[0].normal.y, 0);
-        BallBehavior.Instance.ReverseMotion(normalCollision);
+        base.OnCollision(other);
+        float distanceFromCenter = other.contacts[0].point.y - transform.position.y;
+        BallBehavior.Instance.UpdateDirection(distanceFromCenter * rotationFactor);
     }
 
 
