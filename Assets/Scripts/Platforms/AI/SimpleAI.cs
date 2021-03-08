@@ -19,7 +19,7 @@ public class SimpleAI : MonoBehaviour
     {
         if(BallBehavior.Instance != null)
         {
-            float currentBallYPos = BallBehavior.Instance.CurrentBallPosition().y;
+            float currentBallYPos = BallBehavior.Instance.CurrentPosition.y;
             if(Mathf.Abs(currentBallYPos - actorTransform.localPosition.y) > minDistanceToMove)
             {
                 float direction = currentBallYPos > actorTransform.localPosition.y ? 1 : -1;

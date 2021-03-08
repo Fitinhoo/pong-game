@@ -2,30 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallBehavior : SingletonMonobehaviour<BallBehavior>
+public class BallBehavior : SingletonMonobehaviour<BallBehavior>, IResettable
 {
     #region <--- VARIABLES --->
     [Header("References: ")]
     [SerializeField] private Transform actorTransform = default;
     [Header("Settings: ")]
     [SerializeField] private float speed = default;
+    [SerializeField] private Vector2 ballStartPosition = default;
     [SerializeField] private float minStartAngle = default;
     [SerializeField] private float maxStartAngle = default;
     [SerializeField] private bool showDebugLines = default;
     [Header("For Deubg: ")]
     [SerializeField] private bool isOffTheField = default;
+    [SerializeField] private bool isEnabled = default;
+    public Vector3 CurrentDirection { get; private set; } = default;
+    public Vector3 CurrentPosition { get; private set; } = default;
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* ENGINE METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
-    void Start()
-    {
-        isOffTheField = false;
-        SetStartDirection();
-    }
-
-
     void Update()
     {
+        CurrentPosition = actorTransform.localPosition;
+        CurrentDirection = actorTransform.right;
         actorTransform.Translate(Vector3.right * Time.deltaTime * speed);
 
         if (GameFieldController.Instance.IsOffTheField(actorTransform.localPosition))
@@ -58,13 +57,24 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>
     }
 
 
-    public void UpdateDirection(float angleToSum)
+    public void ForceDirection(Vector2 newDirection) => actorTransform.right = newDirection;
+
+
+    public void OnReset()
     {
-        actorTransform.right = new Vector3( actorTransform.right.x, actorTransform.right.y + angleToSum, actorTransform.right.z).normalized;
+        actorTransform.localPosition = ballStartPosition;
+        isOffTheField = false;
+        SetStartDirection();
+        SetEnabled(true);
     }
 
 
-    public Vector3 CurrentBallPosition() => actorTransform.localPosition;
+    public void SetEnabled(bool status)
+    {
+        isEnabled = enabled = status;
+        actorTransform.gameObject.SetActive(status);
+    }
+
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PRIVATE METHODS  ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
@@ -74,6 +84,8 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>
         Debug.DrawRay(actorTransform.position, normalDirection * 2, Color.blue, 2);
         Debug.DrawRay(actorTransform.position, newDirection * 2, Color.yellow, 2);
     }
+
+
 
 
     #endregion
