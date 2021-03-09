@@ -14,13 +14,19 @@ public class PlatformsController : SingletonMonobehaviour<PlatformsController>, 
     #region <--- VARIABLES --->
     [Header("References: ")]
     [SerializeField] private List<platformStruct> levelPlatforms = default;
+    private float halfWidth = default;
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* ENGINE METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
     private void Start()
     {
+        halfWidth = GameFieldController.Instance.FieldWidth / 2;
         foreach (platformStruct platform in levelPlatforms)
+        {
             platform.movementScript?.SetPlatformTransform(platform.actorTransform);
+            platform.actorTransform.transform.localPosition = new Vector3(halfWidth * platform.distanceFromTheCenterPercentage, 0, 0);
+        }
+            
     }
 
 
@@ -28,7 +34,6 @@ public class PlatformsController : SingletonMonobehaviour<PlatformsController>, 
     #region <~~*~~*~~*~~*~~*~~* PUBLIC METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
     public void OnReset()
     {
-        float halfWidth = GameFieldController.Instance.FieldWidth / 2;
         foreach (platformStruct platform in levelPlatforms)
         {
             platform.actorTransform.gameObject.SetActive(true);
