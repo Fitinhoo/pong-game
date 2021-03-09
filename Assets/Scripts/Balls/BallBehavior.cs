@@ -29,15 +29,12 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>, IMatchResettab
 
         if (GameFieldController.Instance.IsOffTheField(actorTransform.localPosition))
         {
-            if (!isOffTheField)
+            if (GameFieldController.Instance.IsOffTheFieldWidth(actorTransform.localPosition))
             {
-                if (GameFieldController.Instance.IsOffTheFieldHeight(actorTransform.localPosition)) ReverseMotion(Vector3.up);
-                else
-                {
-                    actorTransform.gameObject.SetActive(false);
-                    MatchesController.Instance.EndOfMatch(actorTransform.localPosition.x > 0);
-                }
+                MatchesController.Instance.EndOfMatch(actorTransform.localPosition.x > 0);
+                SetEnabled(false);
             }
+            else if (!isOffTheField) ReverseMotion(Vector3.up);
             isOffTheField = true;
         }
         else isOffTheField = false;
