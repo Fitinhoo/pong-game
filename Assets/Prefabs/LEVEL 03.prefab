@@ -109,6 +109,8 @@ MonoBehaviour:
   layerToCollide:
     serializedVersion: 2
     m_Bits: 256
+  impactEffectPrefab: {fileID: 701158364042055362, guid: 8aea411926a07494cac1ec7e3162d20d,
+    type: 3}
 --- !u!1 &6513948703855444286
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +220,8 @@ MonoBehaviour:
   layerToCollide:
     serializedVersion: 2
     m_Bits: 256
+  impactEffectPrefab: {fileID: 701158364042055362, guid: 8aea411926a07494cac1ec7e3162d20d,
+    type: 3}
 --- !u!1 &7949158166880335930
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +415,8 @@ MonoBehaviour:
   layerToCollide:
     serializedVersion: 2
     m_Bits: 256
+  impactEffectPrefab: {fileID: 701158364042055362, guid: 8aea411926a07494cac1ec7e3162d20d,
+    type: 3}
   showDebugLines: 0
   actorHeight: 0
 --- !u!1 &7949158167637585315
@@ -870,6 +876,8 @@ MonoBehaviour:
   layerToCollide:
     serializedVersion: 2
     m_Bits: 256
+  impactEffectPrefab: {fileID: 701158364042055362, guid: 8aea411926a07494cac1ec7e3162d20d,
+    type: 3}
   showDebugLines: 0
   actorHeight: 0
 --- !u!1 &7949158168452738253
