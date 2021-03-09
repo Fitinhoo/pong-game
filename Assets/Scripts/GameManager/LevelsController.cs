@@ -21,11 +21,12 @@ public class LevelsController : SingletonMonobehaviour<LevelsController>
     private void Start()
     {
         randomLevelsEnabled = false;
-        CurrentLevel = 0;
+        CurrentLevel = 1;
         if(forceStartWithLevelIndex != -1)
             CurrentLevelIndex = forceStartWithLevelIndex;
         else
             CurrentLevelIndex = 0;
+        LevelTextController.Instance.UpdateLevelNumber();
     }
 
 
@@ -62,6 +63,7 @@ public class LevelsController : SingletonMonobehaviour<LevelsController>
     private IEnumerator StartLevelCoroutine()
     {
         yield return new WaitForSeconds(delayToRestartLevel);
+        LevelTextController.Instance.UpdateLevelNumber();
         WinTextController.Instance.SetActive(false);
         CountDownController.Instance.StartCountdown();
     }
