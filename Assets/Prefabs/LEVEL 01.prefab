@@ -699,8 +699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6d9bf00f8d06a4e86da6823c410830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
-  minDistanceToMove: 0.1
+  speed: 30
+  minDistanceToMove: 0.2
   useWorldPositions: 1
 --- !u!1 &7949158168582324400
 GameObject:

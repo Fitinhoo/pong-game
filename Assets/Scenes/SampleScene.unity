@@ -674,7 +674,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 59.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -984,7 +984,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 79.65
+  m_fontSize: 45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 60.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1608,7 +1608,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 97.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1888,7 +1888,7 @@ MonoBehaviour:
   - {fileID: 7949158167989487629, guid: 275a7a2863dbf514086af8bc0bcdbc9d, type: 3}
   - {fileID: 7949158167989487629, guid: 494a5b93384b06048a9ebe5c6a8249f6, type: 3}
   delayToRestartLevel: 2
-  forceStartWithLevelIndex: 2
+  forceStartWithLevelIndex: 0
   instantiateRandomAfterTheLast: 1
   currentlevelObject: {fileID: 0}
   CurrentLevelIndex: 0
