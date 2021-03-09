@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformsController : SingletonMonobehaviour<PlatformsController>, IResettable
+public class PlatformsController : SingletonMonobehaviour<PlatformsController>, IMatchResettable
 {
     [System.Serializable] private struct platformStruct
     {

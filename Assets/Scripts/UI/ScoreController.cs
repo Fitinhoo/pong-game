@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ScoreController : SingletonMonobehaviour<ScoreController>, IResettable
+public class ScoreController : SingletonMonobehaviour<ScoreController>, ILevelResettable
 {
     #region <--- VARIABLES --->
     [Header("References: ")]

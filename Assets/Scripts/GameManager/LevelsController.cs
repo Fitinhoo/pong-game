@@ -35,7 +35,7 @@ public class LevelsController : SingletonMonobehaviour<LevelsController>
     {
         if (currentlevelObject != null) Destroy(currentlevelObject);
         currentlevelObject = Instantiate(levelsPrefab[CurrentLevelIndex]);
-        ResetterController.Instance.ResetAll();
+        ResetterController.Instance.LevelResetAll();
     }
 
 

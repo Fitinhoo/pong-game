@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallBehavior : SingletonMonobehaviour<BallBehavior>, IResettable
+public class BallBehavior : SingletonMonobehaviour<BallBehavior>, IMatchResettable
 {
     #region <--- VARIABLES --->
     [Header("References: ")]

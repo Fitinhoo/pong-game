@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MatchesController : SingletonMonobehaviour<MatchesController>, IResettable
+public class MatchesController : SingletonMonobehaviour<MatchesController>, ILevelResettable
 {
     #region <--- VARIABLES --->
     [Header("Settings: ")]
@@ -46,8 +46,7 @@ public class MatchesController : SingletonMonobehaviour<MatchesController>, IRes
     private IEnumerator RestartMatchCoroutine()
     {
         yield return new WaitForSeconds(delayToRestartMatch);
-        BallBehavior.Instance.OnReset();
-        PlatformsController.Instance.OnReset();
+        ResetterController.Instance.MatchResetAll();
     }
 
 
