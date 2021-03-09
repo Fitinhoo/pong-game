@@ -32,7 +32,7 @@ public class PlatformsController : SingletonMonobehaviour<PlatformsController>, 
         {
             platform.actorTransform.gameObject.SetActive(true);
             platform.actorTransform.transform.localPosition = new Vector3(halfWidth * platform.distanceFromTheCenterPercentage, 0, 0);
-            platform.movementScript.SetEnabled(false);
+            platform.movementScript.OnReset();
         }
     }
 

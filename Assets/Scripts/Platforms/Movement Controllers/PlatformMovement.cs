@@ -17,7 +17,7 @@ public abstract class PlatformMovement : MonoBehaviour
     #region <~~*~~*~~*~~*~~*~~* ENGINE METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
     private void Start()
     {
-        isMoveEnabled = false;
+        OnReset();
     }
 
 
@@ -30,13 +30,17 @@ public abstract class PlatformMovement : MonoBehaviour
     #region <~~*~~*~~*~~*~~*~~* PUBLIC METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
     public void SetPlatformTransform(Transform obj) => actorTransform = obj;
 
+
     public void SetEnabled(bool status) => isMoveEnabled = status;
+
+
+    public virtual void OnReset() => SetEnabled(false);
+
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PRIVATE METHODS  ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
     private void Move()
     {
-
         if (Vector3.Distance(nextPosition, actorTransform.localPosition) > minDistanceToMove)
         {
             Vector3 direction = (nextPosition - actorTransform.localPosition).normalized;
