@@ -32,7 +32,11 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>, IResettable
             if (!isOffTheField)
             {
                 if (GameFieldController.Instance.IsOffTheFieldHeight(actorTransform.localPosition)) ReverseMotion(Vector3.up);
-                else ReverseMotion(Vector3.left);
+                else
+                {
+                    actorTransform.gameObject.SetActive(false);
+                    MatchesController.Instance.EndOfMatch(actorTransform.localPosition.x > 0);
+                }
             }
             isOffTheField = true;
         }
@@ -60,15 +64,6 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>, IResettable
     public void ForceDirection(Vector2 newDirection) => actorTransform.right = newDirection;
 
 
-    public void OnReset()
-    {
-        actorTransform.localPosition = ballStartPosition;
-        isOffTheField = false;
-        SetStartDirection();
-        SetEnabled(true);
-    }
-
-
     public void SetEnabled(bool status)
     {
         isEnabled = enabled = status;
@@ -76,16 +71,23 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>, IResettable
     }
 
 
+    public void OnReset()
+    {
+        actorTransform.gameObject.SetActive(true);
+        actorTransform.localPosition = ballStartPosition;
+        isOffTheField = false;
+        SetStartDirection();
+        SetEnabled(true);
+    }
+
+
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PRIVATE METHODS  ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
-
     private void ShowDebugLines(Vector3 normalDirection, Vector3 newDirection)
     {
         Debug.DrawRay(actorTransform.position, normalDirection * 2, Color.blue, 2);
         Debug.DrawRay(actorTransform.position, newDirection * 2, Color.yellow, 2);
     }
-
-
 
 
     #endregion

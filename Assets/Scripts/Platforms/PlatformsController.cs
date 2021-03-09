@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformsController : MonoBehaviour, IResettable
+public class PlatformsController : SingletonMonobehaviour<PlatformsController>, IResettable
 {
     [System.Serializable] private struct platformStruct
     {
@@ -32,6 +32,7 @@ public class PlatformsController : MonoBehaviour, IResettable
         {
             platform.actorTransform.gameObject.SetActive(true);
             platform.actorTransform.transform.localPosition = new Vector3(halfWidth * platform.distanceFromTheCenterPercentage, 0, 0);
+            platform.movementScript.SetEnabled(false);
         }
     }
 

@@ -9,8 +9,6 @@ public class ScoreController : SingletonMonobehaviour<ScoreController>, IResetta
     [Header("References: ")]
     [SerializeField] private TextMeshProUGUI leftScore = default;
     [SerializeField] private TextMeshProUGUI rightScore = default;
-    public int LeftScoreCount { get; private set; } = default;
-    public int RightScoreCount { get; private set; } = default;
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* ENGINE METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
@@ -21,24 +19,11 @@ public class ScoreController : SingletonMonobehaviour<ScoreController>, IResetta
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PUBLIC METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
-    public void AddLeftScore()
-    {
-        LeftScoreCount++;
-        leftScore.text += "| ";
-    }
+    public void AddLeftScore() => leftScore.text += "| ";
 
+    public void AddRightScore() => rightScore.text += "| ";
 
-    public void AddRightScore()
-    {
-        RightScoreCount++;
-        rightScore.text += "| ";
-    }
-
-    public void OnReset()
-    {
-        leftScore.text = rightScore.text = "";
-        RightScoreCount = LeftScoreCount = 0;
-    }
+    public void OnReset() => leftScore.text = rightScore.text = "";
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PRIVATE METHODS  ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
