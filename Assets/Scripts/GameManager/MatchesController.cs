@@ -21,11 +21,9 @@ public class MatchesController : SingletonMonobehaviour<MatchesController>, ILev
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PUBLIC METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
-    public void RestartMatch() => StartCoroutine(RestartMatchCoroutine());
-
-
     public void EndOfMatch(bool isLeftPoint)
     {
+        PlatformsController.Instance.DisablePlatforms();
         UpdateScore(isLeftPoint);
         if (leftWinsCount == 3)
             LeftWin();
@@ -34,6 +32,9 @@ public class MatchesController : SingletonMonobehaviour<MatchesController>, ILev
         else
             RestartMatch();
     }
+
+
+    public void RestartMatch() => StartCoroutine(RestartMatchCoroutine());
 
 
     public void OnReset()

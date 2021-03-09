@@ -20,8 +20,9 @@ public class PlatformsController : SingletonMonobehaviour<PlatformsController>, 
     private void Start()
     {
         foreach (platformStruct platform in levelPlatforms)
-            platform.movementScript.SetPlatformTransform(platform.actorTransform);
+            platform.movementScript?.SetPlatformTransform(platform.actorTransform);
     }
+
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PUBLIC METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
@@ -32,8 +33,15 @@ public class PlatformsController : SingletonMonobehaviour<PlatformsController>, 
         {
             platform.actorTransform.gameObject.SetActive(true);
             platform.actorTransform.transform.localPosition = new Vector3(halfWidth * platform.distanceFromTheCenterPercentage, 0, 0);
-            platform.movementScript.OnReset();
+            platform.movementScript?.OnReset();
         }
+    }
+
+
+    public void DisablePlatforms()
+    {
+        foreach (platformStruct platform in levelPlatforms)
+            platform.actorTransform.gameObject.SetActive(false);
     }
 
 
