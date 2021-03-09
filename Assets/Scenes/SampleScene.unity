@@ -1706,8 +1706,9 @@ MonoBehaviour:
   - {fileID: 7949158167989487629, guid: 2ccfbab6f4593dd46a9f247f69c9be9a, type: 3}
   - {fileID: 7949158167989487629, guid: 6e4d4684efb62614f925bd05983f896c, type: 3}
   - {fileID: 7949158167989487629, guid: 275a7a2863dbf514086af8bc0bcdbc9d, type: 3}
+  - {fileID: 7949158167989487629, guid: 494a5b93384b06048a9ebe5c6a8249f6, type: 3}
   delayToRestartLevel: 2
-  forceStartWithLevelIndex: 2
+  forceStartWithLevelIndex: 3
   instantiateRandomAfterTheLast: 1
   currentlevelObject: {fileID: 0}
   CurrentLevelIndex: 0
