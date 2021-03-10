@@ -65,7 +65,7 @@ public class LevelsController : SingletonMonobehaviour<LevelsController>
         yield return new WaitForSeconds(delayToRestartLevel);
         LevelTextController.Instance.UpdateLevelNumber();
         WinTextController.Instance.SetActive(false);
-        CountDownController.Instance.StartCountdown();
+        StartButtonController.Instance.SetActive(true);
     }
 
 
