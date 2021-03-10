@@ -9,26 +9,54 @@ public class GameFieldController : SingletonMonobehaviour<GameFieldController>
     public float FieldHeight { get; private set; } = default;
     public float FieldWidth { get; private set; } = default;
 
+    private CameraSize cameraSizeScript = default;
+
+
     #endregion
     #region <~~*~~*~~*~~*~~*~~* ENGINE METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
+    protected override void Awake()
+    {
+        base.Awake();
+        cameraSizeScript = new CameraSize();
+    }
+
+
     private void Start()
     {
-        FieldHeight = 2f * Camera.main.orthographicSize;
-        FieldWidth = FieldHeight * Camera.main.aspect;
+        FieldHeight = cameraSizeScript.GetFieldHeight(Camera.main);
+        FieldWidth = cameraSizeScript.GetFieldWidth(Camera.main);
     }
 
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PUBLIC METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
-    public bool IsOffTheFieldHeight(Vector3 pos) => Mathf.Abs(pos.y) >= FieldHeight / 2 == true ? true: false;
+    public bool IsOffTheFieldHeight(Vector3 pos) => cameraSizeScript.IsOffTheFieldHeight(pos, Camera.main);
 
-    public bool IsOffTheFieldWidth(Vector3 pos) => Mathf.Abs(pos.x) >= FieldWidth / 2 == true ? true : false;
+    public bool IsOffTheFieldWidth(Vector3 pos) => cameraSizeScript.IsOffTheFieldWidth(pos, Camera.main);
 
-    public bool IsOffTheField(Vector3 pos) => IsOffTheFieldHeight(pos) || IsOffTheFieldWidth(pos);
+    public bool IsOffTheField(Vector3 pos) => cameraSizeScript.IsOffTheField(pos, Camera.main);
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PRIVATE METHODS  ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
 
 
     #endregion
+}
+
+
+public class CameraSize
+{
+    public float GetFieldHeight(Camera cam) => 2f * cam.orthographicSize;
+
+
+    public float GetFieldWidth(Camera cam) => GetFieldHeight(cam) * cam.aspect;
+
+
+    public bool IsOffTheFieldHeight(Vector3 point, Camera cam) => Mathf.Abs(point.y) >= ( GetFieldHeight(cam) / 2 ) ? true : false;
+
+
+    public bool IsOffTheFieldWidth(Vector3 point, Camera cam) => Mathf.Abs(point.x) >= ( GetFieldWidth(cam) / 2 ) ? true : false;
+
+
+    public bool IsOffTheField(Vector3 point, Camera cam) => IsOffTheFieldHeight(point, cam) || IsOffTheFieldWidth(point, cam);
 }
