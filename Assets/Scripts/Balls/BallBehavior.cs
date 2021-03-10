@@ -18,9 +18,16 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>, IMatchResettab
     [SerializeField] private bool isEnabled = default;
     public Vector3 CurrentDirection { get; private set; } = default;
     public Vector3 CurrentPosition { get; private set; } = default;
+    private Reflexion reflexionScript = default;
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* ENGINE METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
+    protected override void Awake()
+    {
+        base.Awake();
+        reflexionScript = new Reflexion();
+    }
+
     void Update()
     {
         CurrentPosition = actorTransform.localPosition;
@@ -52,8 +59,7 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>, IMatchResettab
 
     public void ReverseMotion(Vector3 normalDirection)
     {
-        Vector3 newDirection = Vector3.Reflect(actorTransform.right, normalDirection);
-        actorTransform.right = newDirection;
+        Vector3 newDirection = reflexionScript.ChangeDirection(actorTransform, normalDirection);
         if (showDebugLines) ShowDebugLines(normalDirection, newDirection);
     }
 
@@ -88,4 +94,15 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>, IMatchResettab
 
 
     #endregion
+}
+
+
+public class Reflexion
+{
+    public Vector3 ChangeDirection(Transform actorTransform, Vector3 normalDirection)
+    {
+        Vector3 newDirection = Vector3.Reflect(actorTransform.right, normalDirection);
+        actorTransform.right = newDirection;
+        return newDirection;
+    }
 }
