@@ -28,23 +28,13 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>, IMatchResettab
         reflexionScript = new Reflexion();
     }
 
+
     void Update()
     {
         CurrentPosition = actorTransform.localPosition;
         CurrentDirection = actorTransform.right;
-        actorTransform.Translate(Vector3.right * Time.deltaTime * speed);
-
-        if (GameFieldController.Instance.IsOffTheField(actorTransform.localPosition))
-        {
-            if (GameFieldController.Instance.IsOffTheFieldWidth(actorTransform.localPosition))
-            {
-                MatchesController.Instance.EndOfMatch(actorTransform.localPosition.x > 0);
-                SetEnabled(false);
-            }
-            else if (!isOffTheField) ReverseMotion(Vector3.up);
-            isOffTheField = true;
-        }
-        else isOffTheField = false;
+        Move();
+        CheckOffTheField();
     }
 
 
@@ -86,6 +76,25 @@ public class BallBehavior : SingletonMonobehaviour<BallBehavior>, IMatchResettab
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PRIVATE METHODS  ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
+    private void CheckOffTheField()
+    {
+        if (GameFieldController.Instance.IsOffTheField(actorTransform.localPosition))
+        {
+            if (GameFieldController.Instance.IsOffTheFieldWidth(actorTransform.localPosition))
+            {
+                MatchesController.Instance.EndOfMatch(actorTransform.localPosition.x > 0);
+                SetEnabled(false);
+            }
+            else if (!isOffTheField) ReverseMotion(Vector3.up);
+            isOffTheField = true;
+        }
+        else isOffTheField = false;
+    }
+
+
+    private void Move() => actorTransform.Translate(Vector3.right * Time.deltaTime * speed);
+
+
     private void ShowDebugLines(Vector3 normalDirection, Vector3 newDirection)
     {
         Debug.DrawRay(actorTransform.position, normalDirection * 2, Color.blue, 2);
