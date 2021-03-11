@@ -6,6 +6,7 @@ public class MatchesController : SingletonMonobehaviour<MatchesController>, ILev
 {
     #region <--- VARIABLES --->
     [Header("Settings: ")]
+    [SerializeField] private int victoriesToWin = default;
     [SerializeField] private float delayToRestartMatch = default;
     [Header("For Debug: ")]
     [SerializeField] private int leftWinsCount = default;
@@ -25,9 +26,9 @@ public class MatchesController : SingletonMonobehaviour<MatchesController>, ILev
     {
         PlatformsController.Instance.DisablePlatforms();
         UpdateScore(isLeftPoint);
-        if (leftWinsCount == 3)
+        if (leftWinsCount == victoriesToWin)
             LeftWin();
-        else if (rightWinsCount == 3)
+        else if (rightWinsCount == victoriesToWin)
             RightWin();
         else
             RestartMatch();
