@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MatchesController : SingletonMonobehaviour<MatchesController>, ILevelResettable
+public class MatchesController : SingletonMonobehaviour<MatchesController>, ILevelResettable, INeedValidate
 {
     #region <--- VARIABLES --->
     [Header("Settings: ")]
@@ -16,12 +16,24 @@ public class MatchesController : SingletonMonobehaviour<MatchesController>, ILev
     #region <~~*~~*~~*~~*~~*~~* ENGINE METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
     private void Start()
     {
+        if (!Validate()) gameObject.SetActive(false);
         OnReset();
     }
 
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PUBLIC METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
+    public bool Validate()
+    {
+        if (victoriesToWin < 1)
+        {
+            Debug.LogError(this.name + " | victoriesToWin cannot be less than or equal to zero. I will disable the game object.");
+            return false;
+        }
+        return true;
+    }
+
+
     public void EndOfMatch(bool isLeftPoint)
     {
         PlatformsController.Instance.DisablePlatforms();

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CountDownController : SingletonMonobehaviour<CountDownController>
+public class CountDownController : SingletonMonobehaviour<CountDownController>, INeedValidate
 {
     #region <--- VARIABLES --->
     [Header("References: ")]
@@ -19,13 +19,25 @@ public class CountDownController : SingletonMonobehaviour<CountDownController>
     #region <~~*~~*~~*~~*~~*~~* ENGINE METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
     private void Start()
     {
+        if (!Validate()) gameObject.SetActive(false);
         actorUI.gameObject.SetActive(false);
     }
 
+
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PUBLIC METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
-    public void StartCountdown() => StartCoroutine(CountdownCoroutine());
+    public bool Validate()
+    {
+        if(actorUI == null)
+        {
+            Debug.LogError(this.name + " | actorUI cannot be null. I will disable the game object.");
+            return false;
+        }
+        return true;
+    }
 
+
+    public void StartCountdown() => StartCoroutine(CountdownCoroutine());
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PRIVATE METHODS  ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>

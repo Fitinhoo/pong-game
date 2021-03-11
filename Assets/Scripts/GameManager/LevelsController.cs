@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelsController : SingletonMonobehaviour<LevelsController>
+public class LevelsController : SingletonMonobehaviour<LevelsController>, INeedValidate
 {
     #region <--- VARIABLES --->
     [Header("Settings: ")]
@@ -20,6 +20,7 @@ public class LevelsController : SingletonMonobehaviour<LevelsController>
     #region <~~*~~*~~*~~*~~*~~* ENGINE METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
     private void Start()
     {
+        if (!Validate()) gameObject.SetActive(false);
         randomLevelsEnabled = false;
         CurrentLevel = 1;
         if(forceStartWithLevelIndex != -1)
@@ -32,6 +33,17 @@ public class LevelsController : SingletonMonobehaviour<LevelsController>
 
     #endregion
     #region <~~*~~*~~*~~*~~*~~* PUBLIC METHODS   ~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*~~*>
+    public bool Validate()
+    {
+        if (levelsPrefab.Count == 0)
+        {
+            Debug.LogError(this.name + " | victoriesToWin cannot be empty. I will disable the game object.");
+            return false;
+        }
+        return true;
+    }
+
+
     public void StartLevel()
     {
         if (currentlevelObject != null) Destroy(currentlevelObject);
@@ -89,6 +101,7 @@ public class LevelsController : SingletonMonobehaviour<LevelsController>
                 CurrentLevelIndex++;
         }
     }
+
 
     #endregion
 }

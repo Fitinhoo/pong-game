@@ -121,6 +121,49 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &74210798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 74210799}
+  - component: {fileID: 74210800}
+  m_Layer: 0
+  m_Name: Resetters Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &74210799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74210798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 306918449}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &74210800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74210798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94dbac479a38d7458c3110020c19033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &204251623
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +225,7 @@ Transform:
   m_Children:
   - {fileID: 1949625948}
   - {fileID: 1592420014}
+  - {fileID: 74210799}
   - {fileID: 1457896811}
   - {fileID: 881186786}
   m_Father: {fileID: 0}
@@ -801,7 +845,7 @@ Transform:
   - {fileID: 1728731563}
   - {fileID: 485204359}
   m_Father: {fileID: 306918449}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &953019775
 GameObject:
@@ -1467,7 +1511,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 306918449}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1483584126
 GameObject:
@@ -2053,7 +2097,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1949625948}
   - component: {fileID: 1949625947}
-  - component: {fileID: 1949625949}
   m_Layer: 0
   m_Name: Levels Controller
   m_TagString: Untagged
@@ -2098,15 +2141,3 @@ Transform:
   m_Father: {fileID: 306918449}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1949625949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949625946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f94dbac479a38d7458c3110020c19033, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
